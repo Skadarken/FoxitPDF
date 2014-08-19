@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.stc.FoxitPDFPlugin"
+    version="1.0.0">
+
+	<name>FoxitPDFPlugin</name>
+	<author>STC</author>
+
+	<description>
+		This plugin implements the Foxit Embedded SDK to open, view and annotate PDF files.
+	</description>
+
+	<license>MIT</license>
+
+	<js-module src="www/FoxitPDFPlugin.js" name="FoxitPDFPlugin">
+        <clobbers target="www/FoxitPDFPlugin.js" />
+	</js-module>
+
+	<engines>
+		<engine name="cordova" version=">=3.0.0" />
+	</engines>
+
+	<!-- android -->
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="FoxitPDFPlugin">
+				<param name="ios-package" value="FoxitPDFPlugin"/>
+			</feature>
+		</config-file>
+
+		<source-file src="src/ios/FoxitPDFPlugin.mm" />
+		<source-file src="src/ios/FoxitPDFPluginVC.m" />
+
+		<source-file src="src/ios/FoxitIOSRDK.embeddedframework/libfpdfemb_ios_arm.a" framework="true" />
+		<source-file src="src/ios/FoxitIOSRDK.embeddedframework/libfpdfemb_ios_emu.a" framework="true" />
+
+		<header-file src="src/ios/FoxitPDFPlugin.h" />
+		<header-file src="src/ios/FoxitPDFPluginVC.h" />
+
+		<header-file src="src/ios/FoxitIOSRDK.embeddedframework/FoxitIOSRDK.framework/Versions/A/Headers/FXPDFViewController.h" />
+		<header-file src="src/ios/FoxitIOSRDK.embeddedframework/FoxitIOSRDK.framework/Versions/A/Headers/FXPDFViewControllerDelegate.h" />
+		<header-file src="src/ios/FoxitIOSRDK.embeddedframework/FoxitIOSRDK.framework/Versions/A/Headers/FXUtils.h" />
+
+		<framework src="src/ios/FoxitIOSRDK.embeddedframework" custom="true" />
+		<framework src="src/ios/FoxitIOSRDK.embeddedframework/FoxitIOSRDK.framework" custom="true" />
+		<framework src="MessageUI.framework" />
+		<framework src="QuartzCore.framework" />
+		<framework src="CoreText.framework" />
+		<framework src="CoreGraphics.framework" />
+		<framework src="Foundation.framework" />
+		<framework src="UIKit.framework" />
+	</platform>
+
+</plugin>
